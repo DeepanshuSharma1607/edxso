@@ -1,0 +1,22 @@
+# Environment / secrets
+.env
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+
+# Data outputs — the deliverable dataset (raw → shortlisted → enriched →
+# personalized → tracker) IS committed so reviewers can inspect it. Only the
+# large on-disk API caches are ignored; they are regenerable and just bloat.
+data/.video_cache.json
+data/.personalize_cache.json
+data/_backup_*/
+data/_superseded_*/
+
+# IDE / tooling
+.vscode/
+.idea/
+.claude/

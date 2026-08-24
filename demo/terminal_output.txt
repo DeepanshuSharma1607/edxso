@@ -1,0 +1,100 @@
+===============================================================
+ DEMO EVIDENCE - Automated Micro-Influencer Outreach System
+ EDXSO AI Engineer Intern, Assignment 1
+
+ Real terminal output captured on 2026-08-25 from a live run on
+ the committed dataset. Reproduce with the commands shown.
+ Screenshots of these same runs are in this folder.
+===============================================================
+
+### 1. Offline test suite  ->  python -m unittest discover -s tests -v
+
+test_angle_is_valid (test_pipeline.TestCollaborationAngle.test_angle_is_valid) ... ok
+test_deterministic (test_pipeline.TestCollaborationAngle.test_deterministic) ... ok
+test_no_videos_is_safe (test_pipeline.TestComputeEngagement.test_no_videos_is_safe) ... ok
+test_skips_zero_view_videos (test_pipeline.TestComputeEngagement.test_skips_zero_view_videos) ... ok
+test_rejects_www_prefixed_junk (test_pipeline.TestEmailExtraction.test_rejects_www_prefixed_junk) ... ok
+test_strips_glued_label (test_pipeline.TestEmailExtraction.test_strips_glued_label) ... ok
+test_valid_email_passes (test_pipeline.TestEmailExtraction.test_valid_email_passes) ... ok
+test_partial_is_proportional (test_pipeline.TestEngagementScoring.test_partial_is_proportional) ... ok
+test_saturates_at_full_marks (test_pipeline.TestEngagementScoring.test_saturates_at_full_marks) ... ok
+test_zero_engagement_scores_zero (test_pipeline.TestEngagementScoring.test_zero_engagement_scores_zero) ... ok
+test_already_contacted_statuses (test_pipeline.TestOutreachTracker.test_already_contacted_statuses) ... ok
+test_orphan_rows_are_dropped (test_pipeline.TestOutreachTracker.test_orphan_rows_are_dropped)
+Tracker rows whose channel left the shortlist must not pad output. ... ok
+test_outreach_id_is_stable (test_pipeline.TestOutreachTracker.test_outreach_id_is_stable) ... ok
+test_simulated_receipt_marked (test_pipeline.TestOutreachTracker.test_simulated_receipt_marked) ... ok
+test_accepts_real_site (test_pipeline.TestWebsiteValidation.test_accepts_real_site) ... ok
+test_rejects_cdn_asset (test_pipeline.TestWebsiteValidation.test_rejects_cdn_asset) ... ok
+test_range_miss_counts_overflow_and_underflow (test_pipeline.TestWordCountVerification.test_range_miss_counts_overflow_and_underflow) ... ok
+test_range_miss_zero_when_compliant (test_pipeline.TestWordCountVerification.test_range_miss_zero_when_compliant) ... ok
+test_word_count (test_pipeline.TestWordCountVerification.test_word_count) ... ok
+
+----------------------------------------------------------------------
+Ran 19 tests in 1.786s
+
+OK
+
+### 2. Stage 5 sending layer  ->  python main.py --stage send --mode simulate
+
+
+============================================================
+*** AUTOMATED MICRO-INFLUENCER OUTREACH SYSTEM ***
+Target Stage: SEND
+============================================================
+
+
+--- Running Stage 5: Sending Layer & Outreach Tracker ---
+02:11:42  INFO     === Stage 5: Sending Layer & Outreach Tracker ===
+02:11:42  INFO     Execution mode: SIMULATE
+02:11:42  INFO     Outreach tracker -> 69 rows (one per influencer)
+02:11:42  INFO     Instagram DM queue -> C:\Users\Deepanshu sharma\Desktop\edx\data\instagram_dm_queue.csv (49 rows)
+
+======================================================================
+Stage 5 Sending Layer Summary  (mode: SIMULATE)
+  Influencers processed      : 69
+  Emails sent (live)         : 0
+  Emails simulated           : 23
+  Send failures              : 0
+  Skipped - no email found   : 32
+  Skipped - no message       : 0
+  Duplicates prevented       : 14
+  Instagram DMs queued       : 49
+  No Instagram handle        : 20
+  Tracker rows (1/influencer): 69
+  Tracker  -> C:\Users\Deepanshu sharma\Desktop\edx\data\outreach_tracker.csv
+  DM queue -> C:\Users\Deepanshu sharma\Desktop\edx\data\instagram_dm_queue.csv
+======================================================================
+
+
+============================================================
+[+] PIPELINE EXECUTION FINISHED
+============================================================
+
+
+### 3. SPEC 7-B dataset export  ->  python main.py --stage export
+
+
+============================================================
+*** AUTOMATED MICRO-INFLUENCER OUTREACH SYSTEM ***
+Target Stage: EXPORT
+============================================================
+
+
+--- Export: SPEC 7-B influencer dataset ---
+02:11:43  INFO     === Export: SPEC 7-B influencer dataset ===
+
+======================================================================
+SPEC 7-B Influencer Dataset exported
+  Influencers            : 69 (brief asks for 50+)
+  With verified email    : 37
+  Marked 'Not Found'     : 32
+  Columns                : 16 (9 required by SPEC 7-B + 7 supporting)
+  CSV -> C:\Users\Deepanshu sharma\Desktop\edx\data\influencer_dataset.csv
+======================================================================
+
+
+============================================================
+[+] PIPELINE EXECUTION FINISHED
+============================================================
+
