@@ -40,13 +40,13 @@ import logging
 import os
 from datetime import datetime, timezone
 
-from src.utils.config import (
+from ass_1.src.utils.config import (
     RAW_CHANNELS_CSV,
     FILTERED_CHANNELS_CSV,
     SHORTLISTED_CSV,
     SHORTLISTED_JSON,
 )
-from src.utils.youtube import (
+from ass_1.src.utils.youtube import (
     QuotaExceeded,
     compute_engagement,
     get_recent_videos,

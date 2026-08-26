@@ -27,7 +27,7 @@ import time
 
 import requests
 
-from src.utils.config import DATA_DIR, YOUTUBE_API_KEY
+from ass_1.src.utils.config import DATA_DIR, YOUTUBE_API_KEY
 
 BASE_URL = "https://www.googleapis.com/youtube/v3"
 VIDEO_CACHE_FILE = os.path.join(DATA_DIR, ".video_cache.json")

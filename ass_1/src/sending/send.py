@@ -39,7 +39,7 @@ from datetime import datetime, timezone
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
-from src.utils.config import (
+from ass_1.src.utils.config import (
     DATA_DIR,
     PERSONALIZED_JSON,
     OUTREACH_TRACKER_CSV,

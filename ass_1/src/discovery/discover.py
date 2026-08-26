@@ -35,7 +35,7 @@ import time
 from datetime import datetime, timezone
 import requests
 
-from src.utils.config import (
+from ass_1.src.utils.config import (
     YOUTUBE_API_KEY,
     RAW_CHANNELS_CSV,
     RAW_CHANNELS_JSON,

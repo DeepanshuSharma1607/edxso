@@ -23,7 +23,7 @@ import json
 import logging
 import os
 
-from src.utils.config import (
+from ass_1.src.utils.config import (
     DATA_DIR,
     FILTERED_CHANNELS_CSV,
     ENRICHED_PROFILES_JSON,

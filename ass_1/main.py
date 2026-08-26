@@ -38,12 +38,12 @@ if sys.platform == "win32":
             setattr(sys, _stream, io.TextIOWrapper(
                 _s.buffer, encoding="utf-8", errors="replace", line_buffering=True))
 
-from src.discovery.discover import run_discovery
-from src.filtering.filter import run_filter
-from src.enrichment.enrich import run_enrich
-from src.personalization.personalize import run_personalize
-from src.sending.send import process_outreach
-from src.utils.export_dataset import export_dataset
+from ass_1.src.discovery.discover import run_discovery
+from ass_1.src.filtering.filter import run_filter
+from ass_1.src.enrichment.enrich import run_enrich
+from ass_1.src.personalization.personalize import run_personalize
+from ass_1.src.sending.send import process_outreach
+from ass_1.src.utils.export_dataset import export_dataset
 
 
 def main():

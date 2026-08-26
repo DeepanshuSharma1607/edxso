@@ -42,7 +42,7 @@ from datetime import datetime, timezone
 
 import requests
 import threading
-from src.utils.config import (
+from ass_1.src.utils.config import (
     GEMINI_API_KEY,
     MISTRAL_API_KEY,
     ENRICHED_PROFILES_JSON,

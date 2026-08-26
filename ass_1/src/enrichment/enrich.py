@@ -41,12 +41,12 @@ from datetime import datetime, timezone
 from urllib.parse import urlparse, unquote
 import requests
 
-from src.utils.config import (
+from ass_1.src.utils.config import (
     SHORTLISTED_CSV,
     ENRICHED_PROFILES_CSV,
     ENRICHED_PROFILES_JSON,
 )
-from src.utils.youtube import (
+from ass_1.src.utils.youtube import (
     get_recent_videos,
     load_video_cache,
     save_video_cache,
