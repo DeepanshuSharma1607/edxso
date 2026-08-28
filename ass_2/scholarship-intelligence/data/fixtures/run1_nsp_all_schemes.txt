@@ -1,0 +1,238 @@
+SOURCE_URL: https://scholarships.gov.in/All-Scholarships
+FETCHED_AT: 2026-08-27T00:00:00Z
+---
+Ministry: Ministry of Home Affairs
+Scheme: Prime Minister'S Scholarship Scheme For Wards Of States/UTs Police Personnel Martyred During Terror/Naxal Attacks (Merit Based Scheme)
+Scheme Open from : 01-06-2026
+Student Application Open till : 31-10-2026
+Institute Verification Open till : 15-11-2026
+Specifications: https://scholarships.gov.in/public/schemeGuidelines/warb/PMSS_Guidelines_1197_3001-2023-24.pdf
+FAQ: https://scholarships.gov.in/public/FAQ/FAQonPMSSS.pdf
+
+Ministry: Ministry of Home Affairs
+Scheme: Prime Minister'S Scholarship Scheme For Central Armed Police Forces And Assam Rifles (Merit Based Scheme)
+Scheme Open from : 01-06-2026
+Student Application Open till : 31-10-2026
+Institute Verification Open till : 15-11-2026
+Specifications: https://scholarships.gov.in/public/schemeGuidelines/warb/PMSS_Guidelines_1197_3001-2023-24.pdf
+FAQ: https://scholarships.gov.in/public/FAQ/FAQonPMSSS.pdf
+
+Ministry: All India Council For Technical Education
+Scheme: AICTE - Swanath Scholarship Scheme ( Technical Degree) (Welfare Based Scheme)
+Scheme Open from : 01-06-2026
+Student Application Open till : 31-10-2026
+Institute Verification Open till : 15-11-2026
+Specifications: https://scholarships.gov.in/public/schemeGuidelines/AICTE/AICTE_3039_G.pdf
+FAQ: https://scholarships.gov.in/public/schemeGuidelines/AICTE/AICTE_3039_F.pdf
+
+Ministry: All India Council For Technical Education
+Scheme: PM USP Special Scholarship Scheme For Jammu Kashmir And Ladakh (Merit Based Scheme)
+Scheme Open from (for Renewal): 01-06-2026
+Student Application Open till (for Renewal): 30-09-2026
+Institute Verification Open till (for Renewal) : 15-10-2026
+Specifications: https://scholarships.gov.in/public/schemeGuidelines/AICTE/PM_USPY(SSSJKL)SchemeSpecifications.pdf
+
+Ministry: All India Council For Technical Education
+Scheme: AICTE - Pragati Scholarship Scheme For Girl Students ( Technical Degree) (Merit Based Scheme)
+Scheme Open from : 01-06-2026
+Student Application Open till : 31-10-2026
+Institute Verification Open till : 15-11-2026
+Specifications: https://scholarships.gov.in/public/schemeGuidelines/AICTE/AICTE_2010_G.pdf
+FAQ: https://scholarships.gov.in/public/schemeGuidelines/AICTE/AICTE_2010_F.pdf
+
+Ministry: All India Council For Technical Education
+Scheme: AICTE - Pragati Scholarship Scheme For Girl Students ( Technical Diploma) (Merit Based Scheme)
+Scheme Open from : 01-06-2026
+Student Application Open till : 31-10-2026
+Institute Verification Open till : 15-11-2026
+Specifications: https://scholarships.gov.in/public/schemeGuidelines/AICTE/AICTE_2011_G.pdf
+FAQ: https://scholarships.gov.in/public/schemeGuidelines/AICTE/AICTE_2011_F.pdf
+
+Ministry: All India Council For Technical Education
+Scheme: AICTE - Saksham Scholarship Scheme For Specially Abled Student ( Technical Diploma) (Welfare Based Scheme)
+Scheme Open from : 01-06-2026
+Student Application Open till : 31-10-2026
+Institute Verification Open till : 15-11-2026
+Specifications: https://scholarships.gov.in/public/schemeGuidelines/AICTE/AICTE_2013_G.pdf
+FAQ: https://scholarships.gov.in/public/schemeGuidelines/AICTE/AICTE_2013_F.pdf
+
+Ministry: All India Council For Technical Education
+Scheme: AICTE - Saksham Scholarship Scheme For Specially Abled Student ( Technical Degree) (Welfare Based Scheme)
+Scheme Open from : 01-06-2026
+Student Application Open till : 31-10-2026
+Institute Verification Open till : 15-11-2026
+Specifications: https://scholarships.gov.in/public/schemeGuidelines/AICTE/AICTE_2012_G.pdf
+FAQ: https://scholarships.gov.in/public/schemeGuidelines/AICTE/AICTE_2012_F.pdf
+
+Ministry: All India Council For Technical Education
+Scheme: AICTE - Swanath Scholarship Scheme (Technical Diploma) (Welfare Based Scheme)
+Scheme Open from : 01-06-2026
+Student Application Open till : 31-10-2026
+Institute Verification Open till : 15-11-2026
+Specifications: https://scholarships.gov.in/public/schemeGuidelines/AICTE/AICTE_3038_G.pdf
+FAQ: https://scholarships.gov.in/public/schemeGuidelines/AICTE/AICTE_3038_F.pdf
+
+Ministry: UGC
+Scheme: National Scholarship For Post Graduate Studies (Merit Based Scheme)
+Scheme : NOT YET OPENED
+Student Application : NOT YET OPENED
+Specifications: https://scholarships.gov.in/public/schemeGuidelines/Guidelines_NATIONAL_SCHOLARSHIP_FOR_POSTGRADUATE_STUDIES_UGC_2324.pdf
+FAQ: https://scholarships.gov.in/public/FAQ/FAQ_NSPG.pdf
+
+Ministry: UGC
+Scheme: Ishan Uday Special Scholarship Scheme For NER (Merit Based Scheme)
+Scheme : NOT YET OPENED
+Student Application : NOT YET OPENED
+Specifications: https://scholarships.gov.in/public/schemeGuidelines/Guidelines_ISHAN UDAY_2324.pdf
+FAQ: https://scholarships.gov.in/public/FAQ/FAQ_Ishanuday.pdf
+
+Ministry: Ministry of Labour & Employment
+Scheme: Financial Assistance For Education To The Wards Of Beedi/Cine/Iomc/Lsdm- Post Matric (Welfare Based Scheme)
+Scheme Open from : 01-06-2026
+Student Application Open till : 31-10-2026
+Institute Verification Open till : 15-11-2026
+Specifications: https://scholarships.gov.in/public/schemeGuidelines/Labour_Ministry_Guidelines_of_scholarhsips schemes.pdf
+FAQ: https://scholarships.gov.in/public/FAQ/MinistryofLabour_FAQ.pdf
+
+Ministry: Ministry of Labour & Employment
+Scheme: Financial Assistance For Education To The Wards Of Beedi/Cine/Iomc/Lsdm- Pre Matric (Welfare Based Scheme)
+Scheme Open from : 01-06-2026
+Student Application Open till : 31-08-2026
+Institute Verification Open till : 15-09-2026
+Specifications: https://scholarships.gov.in/public/schemeGuidelines/Labour_Ministry_Guidelines_of_scholarhsips schemes.pdf
+FAQ: https://scholarships.gov.in/public/FAQ/MinistryofLabour_FAQ.pdf
+
+Ministry: Department of Social Justice & Empowerment(Backward Classes)
+Scheme: PM YASASVI Central Sector Scheme Of Top Class Education In Schools For OBC, EBC And DNT Students (Merit Based Scheme)
+Scheme Open from (for Renewal): 01-06-2026
+Student Application Open till (for Renewal): 31-08-2026
+Institute Verification Open till (for Renewal) : 15-09-2026
+Specifications: https://scholarships.gov.in/public/schemeGuidelines/3061_G.pdf
+
+Ministry: Department of Social Justice & Empowerment(Backward Classes)
+Scheme: PM YASASVI Central Sector Scheme Of Top Class Education In College For OBC, EBC And DNT Students (Merit Based Scheme)
+Scheme Open from : 01-06-2026
+Student Application Open till : 31-10-2026
+Institute Verification Open till : 15-11-2026
+Specifications: https://scholarships.gov.in/public/schemeGuidelines/ApprovedmodifieddraftofTopClassCollege.pdf
+
+Ministry: Ministry of New And Renewable Energy
+Scheme: National Renewable Energy Fellowship Scheme (Merit Based Scheme)
+Scheme Open from : 01-06-2026
+Student Application Open till : 31-10-2026
+Institute Verification Open till : 15-11-2026
+
+Ministry: Ministry of Statistics and Programme Implementation
+Scheme: Stipend Scheme For Under Graduate And Post Graduate Studies In Indian Statistical Institute-Kolkata (Merit Based Scheme)
+Scheme Open from : 01-06-2026
+Student Application Open till : 31-10-2026
+Institute Verification Open till : 15-11-2026
+Specifications: https://scholarships.gov.in/public/schemeGuidelines/STIPEND_STATICAL_GUIDLLINES.pdf
+
+Ministry: Department of Agriculture Research and Education
+Scheme: Icar National Talent Scholarship(Nts-Ug) (Merit Based Scheme)
+Scheme Open from : 01-06-2026
+Student Application Open till : 31-10-2026
+Institute Verification Open till : 15-11-2026
+Specifications: https://scholarships.gov.in/public/schemeGuidelines/GuidelinesforICAR_NTS_Scholarship_3103_3104.pdf
+FAQ: https://scholarships.gov.in/public/FAQ/FAQsforICAR_NTS-UG_3103.pdf
+
+Ministry: Department of Agriculture Research and Education
+Scheme: Icar Post Graduate Scholarship(Pgs) (Merit Based Scheme)
+Scheme Open from : 01-06-2026
+Student Application Open till : 31-10-2026
+Institute Verification Open till : 15-11-2026
+Specifications: https://scholarships.gov.in/public/schemeGuidelines/RevisedGuidelinesforICAR_JRF_SRFandPG_Scholarship_3105_3106.pdf
+
+Ministry: Department of Agriculture Research and Education
+Scheme: Icar National Talent Scholarship(Nts-Pg) (Merit Based Scheme)
+Scheme Open from : 01-06-2026
+Student Application Open till : 31-10-2026
+Institute Verification Open till : 15-11-2026
+Specifications: https://scholarships.gov.in/public/schemeGuidelines/GuidelinesforICAR_NTS_Scholarship_3103_3104.pdf
+
+Ministry: Department of Agriculture Research and Education
+Scheme: Icar Junior Research Fellowships(Jrf) And Senior Research Fellowships(Srf) (Merit Based Scheme)
+Scheme Open from : 01-06-2026
+Student Application Open till : 31-10-2026
+Institute Verification Open till : 15-11-2026
+Specifications: https://scholarships.gov.in/public/schemeGuidelines/RevisedGuidelinesforICAR_JRF_SRFandPG_Scholarship_3105_3106.pdf
+
+Ministry: Department of Social Justice & Empowerment
+Scheme: Central Sector Scholarship Of Top Class Education For SC Students (Merit Based Scheme)
+Scheme Open from : 01-06-2026
+Student Application Open till : 31-10-2026
+Institute Verification Open till : 15-11-2026
+Specifications: https://scholarships.gov.in/public/schemeGuidelines/Top_Class_Education_Scheme_2018.pdf
+FAQ: https://scholarships.gov.in/public/schemeGuidelines/Top_Class_Education_Scheme_2018_FAQ.pdf
+
+Ministry: Department of Social Justice & Empowerment
+Scheme: Free Coaching For Scs OBCs And Beneficiaries Of PM Cares Children Scheme (Welfare Based Scheme)
+Scheme Open from : 03-08-2026
+Student Application Open till : 31-10-2026
+Institute Verification Open till : 15-11-2026
+Specifications: https://scholarships.gov.in/public/schemeGuidelines/guid_3108.pdf
+
+Ministry: Department of Empowerment of Persons with Disabilities
+Scheme: Pre Matric Scholarship For Students With Disabilities (Welfare Based Scheme)
+Scheme Open from : 25-07-2026
+Student Application Open till : 31-08-2026
+Institute Verification Open till : 15-09-2026
+Specifications: https://scholarships.gov.in/public/schemeGuidelines/DEPDGuidelines_1.pdf
+FAQ: https://scholarships.gov.in/public/schemeGuidelines/DEPDFAQ.pdf
+
+Ministry: Department of Empowerment of Persons with Disabilities
+Scheme: Post Matric Scholarship For Students With Disabilities (Welfare Based Scheme)
+Scheme Open from : 25-07-2026
+Student Application Open till : 31-10-2026
+Institute Verification Open till : 15-11-2026
+Specifications: https://scholarships.gov.in/public/schemeGuidelines/DEPDGuidelines_1.pdf
+FAQ: https://scholarships.gov.in/public/schemeGuidelines/DEPDFAQ.pdf
+
+Ministry: Department of Empowerment of Persons with Disabilities
+Scheme: Scholarship For Top Class Education For Students With Disabilities (Welfare Based Scheme)
+Scheme Open from : 01-06-2026
+Student Application Open till : 31-10-2026
+Institute Verification Open till : 15-11-2026
+Specifications: https://scholarships.gov.in/public/schemeGuidelines/DEPDGuidelines_1.pdf
+FAQ: https://scholarships.gov.in/public/schemeGuidelines/DEPDFAQ.pdf
+
+Ministry: Department of School Education & Literacy
+Scheme: National Means Cum Merit Scholarship (Merit Based Scheme)
+Scheme Open from : 01-06-2026
+Student Application Open till : 31-08-2026
+Institute Verification Open till : 15-09-2026
+Specifications: https://scholarships.gov.in/public/schemeGuidelines/NMMSSGuidelines.pdf
+FAQ: https://scholarships.gov.in/public/FAQ/NMSSS_FAQ.pdf
+
+Ministry: Department of Higher Education
+Scheme: PM-USP – Central Sector Scheme Of Scholarship For College And University Students (CSSS) (Merit Based Scheme)
+Scheme Open from (for Renewal): 01-06-2026
+Student Application Open till (for Renewal): 30-09-2026
+Institute Verification Open till (for Renewal) : 15-10-2026
+Specifications: https://scholarships.gov.in/public/schemeGuidelines/CSSS_GUIDLINES_07022024_updated.pdf
+FAQ: https://scholarships.gov.in/public/schemeGuidelines/FAQ_DOHE_CSSS.pdf
+
+Ministry: Ministry of Tribal Affairs
+Scheme: National Fellowship And Scholarship For Higher Education Of ST Students - Scholarship (Formally Top Class Education For Schedule Tribe Students) (Merit Based Scheme)
+Scheme Open from : 01-06-2026
+Student Application Open till : 31-10-2026
+Institute Verification Open till : 15-11-2026
+Specifications: https://scholarships.gov.in/public/schemeGuidelines/tribalfellowshipguideline.pdf
+FAQ: https://scholarships.gov.in/public/schemeGuidelines/tribalfellowshipfaq.pdf
+
+Ministry: North Eastern Council(NEC),DoNER
+Scheme: Financial Support To The Students Of NER For Higher Professional Courses(NEC Merit Scholarship) (Merit Based Scheme)
+Scheme Open from (for Renewal): 15-07-2026
+Student Application Open till (for Renewal): 31-10-2026
+Institute Verification Open till (for Renewal) : 15-11-2026
+Specifications: https://scholarships.gov.in/public/schemeGuidelines/NEC_1234_G.pdf
+FAQ: https://scholarships.gov.in/public/schemeGuidelines/NEC_1234_F.pdf
+
+Ministry: Ministry of Railways (Railway Board)
+Scheme: Prime Minister'S Scholarship Scheme For Ministry Of Railways (Merit Based Scheme)
+Scheme Open from : 01-06-2026
+Student Application Open till : 31-10-2026
+Institute Verification Open till : 15-11-2026
+Specifications: https://scholarships.gov.in/public/schemeGuidelines/MORB_GL.pdf
+FAQ: https://scholarships.gov.in/public/FAQ/FAQs_1198.pdf

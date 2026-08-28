@@ -1,0 +1,27 @@
+# These records were discovered via aggregator/news pages (careers360.com,
+# collegedunia.com), NOT fetched directly from the provider's own official
+# domain during this crawl (the sandbox this project was drafted in could
+# not reach reliancefoundation.org / iilm.edu directly). Per the assignment
+# rule "aggregator websites can be used for discovery but must not be
+# treated as the authoritative source", these records are intentionally
+# scored low and stored as REVIEW_REQUIRED, with the aggregator page kept
+# only as supporting evidence -- not as the official_source_url.
+# When this crawler is run with full internet access, source_detector.py
+# will attempt scholarships.reliancefoundation.org and the university's own
+# domain directly; if reachable, confidence would be recalculated upward.
+---
+SOURCE_TYPE: CORPORATE
+PROVIDER: Reliance Foundation
+CLAIMED_OFFICIAL_DOMAIN: scholarships.reliancefoundation.org
+DISCOVERY_URL: https://school.careers360.com/articles/reliance-foundation-scholarship-2025-26
+NAME: Reliance Foundation Undergraduate Scholarship
+EVIDENCE_TEXT: "Application start date September 16, 2025. Last date to apply online October 7, 2025. Students can follow the steps mentioned below to apply online for the Reliance Foundation Scholarship 2025-26 ... Visit the official website of Reliance Foundation at scholarships.reliancefoundation.org."
+AMOUNT_EVIDENCE: "Selected candidates will receive Rs 2 lakh during their course of study" (2022-23 cycle, amount for current cycle not directly confirmed on official domain)
+ELIGIBILITY_EVIDENCE: "Reliance Foundation Undergraduate Scholarship - For students with at least 60% in Class 12 enrolled in undergraduate programs."
+
+SOURCE_TYPE: UNIVERSITY
+PROVIDER: IILM University, Greater Noida
+CLAIMED_OFFICIAL_DOMAIN: iilm.edu
+DISCOVERY_URL: https://s4.collegedunia.com/college/13752-iilm-university-greater-noida/scholarship
+NAME: IILM University Merit Scholarship (Class XII / Entrance Score Based)
+EVIDENCE_TEXT: "40% XII Marks+Entrance Marks 90%-Above; 20% 80-90% UPSEE/JEE; 10% 70-80%. Sports Scholarship: 10% scholarship is offered to students who have represented in sports at the state/national level. Special Scholarship: 10% scholarship is offered to boys students and 20% is offered to girl students of J&K and NE."

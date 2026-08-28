@@ -1,0 +1,15 @@
+SOURCE_URL: https://scholarships.gov.in/
+FETCHED_AT: 2026-08-27T00:00:00Z
+---
+Academic Year 2026-27
+
+Announcements:
+All disabled students must first login in the UDID portal and provide consent to share their UDID details and then submit application in NSP. Otherwise, they will not be able to submit their application.
+
+Renewal applications for the "PM-USP – Central Sector Scheme Of Scholarship For College And University Students (CSSS) (Merit Based Scheme)" and "PM USP Special Scholarship Scheme For Jammu Kashmir And Ladakh (Merit Based Scheme)" is currently open in NSP. Closing dates for student application is 31-10-2026 and closing date for institute verification is : 15-11-2026 and closing date for L2 verification is : 30/11/2026
+
+The Portal is open for Academic year 2026-27 from 1st June 2026 onwards.
+
+Students may apply for one merit-based scholarship scheme and one or more welfare-based scholarship schemes from AY 2026-27, as per scheme eligibility criteria.
+
+Last update on June 2026.
