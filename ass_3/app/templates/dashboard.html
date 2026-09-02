@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Interview Accelerator</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <span class="brand-mark">IA</span>
+        <span class="brand-name">Interview Accelerator</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="hero">
+      <h1>Prepare for the interview that actually matters.</h1>
+      <p class="subtitle">Paste your Job Description and Resume — we'll analyse the role, score your fit, and run an adaptive AI interview built around you.</p>
+    </div>
+
+    <div class="stepper" id="stepper">
+      <div class="step active" id="stepJD"><span class="step-num">1</span><span>Job Description</span></div>
+      <div class="step-sep"></div>
+      <div class="step" id="stepResume"><span class="step-num">2</span><span>Resume</span></div>
+      <div class="step-sep"></div>
+      <div class="step" id="stepAnalysis"><span class="step-num">3</span><span>Analysis</span></div>
+    </div>
+
+    <div class="grid-2">
+      <div class="card upload-card">
+        <div class="card-head"><h2>Job Description</h2><span class="badge-optional">required</span></div>
+        <textarea id="jd_text" rows="8" placeholder="Paste the job description here..."></textarea>
+        <div class="or-divider"><span>or</span></div>
+        <label class="file-drop" id="jd_file_drop" for="jd_file">
+          <span class="file-drop-icon">📄</span>
+          <span class="file-drop-text" id="jd_file_label">Upload .pdf, .docx or .txt</span>
+          <input type="file" id="jd_file" accept=".pdf,.docx,.txt" hidden />
+        </label>
+      </div>
+
+      <div class="card upload-card">
+        <div class="card-head"><h2>Resume</h2><span class="badge-optional">required</span></div>
+        <textarea id="resume_text" rows="8" placeholder="Paste your resume here..."></textarea>
+        <div class="or-divider"><span>or</span></div>
+        <label class="file-drop" id="resume_file_drop" for="resume_file">
+          <span class="file-drop-icon">📄</span>
+          <span class="file-drop-text" id="resume_file_label">Upload .pdf, .docx or .txt</span>
+          <input type="file" id="resume_file" accept=".pdf,.docx,.txt" hidden />
+        </label>
+      </div>
+    </div>
+
+    <button id="analyseBtn" class="btn-primary btn-block">Analyse My Fit</button>
+    <div id="status" class="status-line"></div>
+
+    <div id="results" class="results hidden">
+      <div class="section-title"><h2>Role Analysis</h2><p>What this job is actually looking for</p></div>
+      <div class="card" id="roleAnalysisCard"></div>
+
+      <div class="section-title"><h2>Candidate Analysis</h2><p>How your background stacks up against it</p></div>
+      <div class="card" id="candidateAnalysisCard"></div>
+
+      <div class="section-title"><h2>Job Fit</h2><p>Your overall match score</p></div>
+      <div class="card" id="jobFitCard"></div>
+
+      <a id="startInterviewLink" href="#" class="btn-primary btn-block btn-cta">Start AI Interview →</a>
+    </div>
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

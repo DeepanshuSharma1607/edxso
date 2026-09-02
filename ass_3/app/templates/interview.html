@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Interview — Interview Accelerator</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <span class="brand-mark">IA</span>
+        <span class="brand-name">Interview Accelerator</span>
+      </div>
+      <a href="/" class="nav-link">← Dashboard</a>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="hero" style="margin-bottom:20px">
+      <h1 style="font-size:24px">AI Interview</h1>
+    </div>
+
+    <div id="sessionEntry" class="card session-entry">
+      <h2 style="margin-top:0">Enter your session</h2>
+      <p class="text-block" style="margin-top:6px">Run analysis on the <a href="/" style="color:var(--accent-2)">dashboard</a> first, then paste your session ID here — or just use the "Start AI Interview" button from there.</p>
+      <input type="text" id="sessionIdInput" placeholder="Paste session_id from dashboard" />
+      <button id="startBtn" class="btn-primary btn-block" style="margin-top:12px">Start Interview</button>
+    </div>
+
+    <div id="status" class="status-line"></div>
+
+    <div id="interviewArea" class="hidden">
+      <div class="interview-stepper" id="interviewStepper">
+        <div class="step" id="stepScreening"><span class="step-num">1</span><span>Screening</span></div>
+        <div class="step-sep"></div>
+        <div class="step" id="stepCompetency"><span class="step-num">2</span><span>Competency</span></div>
+        <div class="step-sep"></div>
+        <div class="step" id="stepDeepDive"><span class="step-num">3</span><span>Deep-Dive</span></div>
+      </div>
+
+      <div style="text-align:center">
+        <span class="level-badge" id="levelBadge">Level: —</span><span class="level-badge timer-badge" id="timerBadge" style="display:none"></span>
+      </div>
+
+      <div id="chat" class="chat" style="margin-top:16px"></div>
+
+      <div class="answer-box">
+        <textarea id="answerInput" rows="4" placeholder="Type your answer here... (or say/type 'stop the interview' to end it)" disabled></textarea>
+        <div class="voice-controls">
+          <button id="recordBtn" class="mic-btn" disabled><span>🎤</span><span id="recordBtnLabel">Record Answer</span></button>
+          <span id="recordStatus"></span>
+        </div>
+        <div class="button-row">
+          <button id="sendBtn" class="btn-primary" disabled>Send Answer</button>
+          <button id="stopBtn" class="btn-secondary" disabled>⏹ Stop Interview</button>
+        </div>
+      </div>
+
+      <div class="voice-toggle">
+        <label><input type="checkbox" id="voiceToggle" checked /> Speak questions aloud</label>
+      </div>
+    </div>
+
+    <div id="reportSection" class="results hidden">
+      <div class="section-title"><h2>Performance Report</h2></div>
+      <div id="reportStatus" class="status-line"></div>
+      <div id="reportBody" class="card hidden">
+        <div class="report-header">
+          <div class="score-ring" id="reportScoreRing">
+            <div class="score-ring-inner">
+              <div class="score-ring-num" id="reportScore"></div>
+              <div class="score-ring-label">/ 100</div>
+            </div>
+          </div>
+          <span id="reportReadinessBadge" class="readiness-badge"></span>
+        </div>
+        <p class="report-summary" id="reportSummary"></p>
+        <div class="report-grid">
+          <div class="report-card">
+            <h3>Strengths</h3>
+            <ul id="reportStrengths"></ul>
+          </div>
+          <div class="report-card">
+            <h3>Weaknesses</h3>
+            <ul id="reportWeaknesses"></ul>
+          </div>
+          <div class="report-card full-width">
+            <h3>Per-Level Feedback</h3>
+            <ul id="reportPerLevel"></ul>
+          </div>
+          <div class="report-card full-width">
+            <h3>Improvement Plan</h3>
+            <ul id="reportImprovementPlan"></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <audio id="ttsAudio" style="display:none"></audio>
+  <script src="/static/interview.js"></script>
+</body>
+</html>
