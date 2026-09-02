@@ -422,7 +422,3 @@ you need persistence across restarts.
 - Deployed on Render's free tier — spins down when idle, so the first request
   after inactivity is slow (~30–60s cold start).
 ```
-
-
-1. **Screenshot filenames** — I used `dashboard.png`, `role-analysis.png`, `candidate-analysis.png`, `interview.png`, `report.png`. Rename your actual files to match, or tell me the real names and I'll fix the paths.
-2. **Google Drive sharing setting** — make sure it's set to "Anyone with the link can view," not restricted, or the evaluator won't be able to open it.
