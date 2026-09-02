@@ -1,148 +1,25 @@
-# Interview Accelerator
+# Interview Accelerator — Build Progress
 
-An AI-powered interview preparation platform. Give it a Job Description and
-your Resume, and it tells you exactly how well you match the role, then runs
-a real adaptive, voice-based mock interview that gets harder or easier based
-on how you're actually doing — and finishes with a detailed performance
-report and a prioritized prep plan.
+Stack: FastAPI (Python), Mistral API (LLM), faster-whisper `tiny` (STT, local/CPU),
+edge-tts (TTS, free). Server-rendered templates (Jinja2 + vanilla JS) — no Node
+build step, matches CPU-only dev environment.
 
-Built for the **AI Product Engineer Intern — Interview Accelerator Challenge**.
+## Status: Phase 1–8 of 9 complete, Phase 9 in progress
 
----
+- [x] Phase 1 — Foundation (FastAPI skeleton, LLM wrapper, routing)
+- [x] Phase 2 — JD & Resume ingestion (paste + PDF/DOCX/TXT upload, extraction, validation)
+- [x] Phase 3 — Role & Candidate Analysis + Job Fit scoring (dashboard UI included)
+- [x] Phase 4 — Interview question engine (adaptive prompt, level guardrails, follow-up logic)
+- [x] Phase 5 — Text-based interview loop (chat UI at `/interview`)
+- [x] Phase 6 — Voice layer (faster-whisper STT + edge-tts TTS) — mandatory
+  - includes: "stop the interview" voice/text command, a Stop Interview button, and a hard 10-minute wall-clock cap — all three end the interview without an extra LLM call and record why in `ended_reason`
+- [x] Phase 7 — Evaluation & report generation (deterministic per-level/overall scoring + LLM-written narrative, cached per session, rendered on the interview page once it ends)
+- [x] Phase 8 — Report UI + polish (color-coded score/readiness badge, card-based layout, live countdown badge with warning/critical color states)
+- [ ] Phase 9 — Deployment & submission packaging (`.gitignore` and a placeholder `.env.example` are in now; a live deployment URL, if your brief requires one, is still an open decision — see "Before you submit" below)
 
-## Why this exists
-
-A candidate applying for a job usually has a resume and a JD, but no real way
-to answer:
-
-- What is this employer actually looking for?
-- How well do I actually match?
-- What will they ask me, specifically?
-- Am I actually ready?
-
-This tool answers all four — using the candidate's own resume and the actual
-JD, not generic interview-question banks.
-
-## What it does
-
-**1. Understand the role.** Paste or upload a JD → the AI extracts role
-title, required/preferred skills, technical and behavioural competencies,
-experience expectations, and key qualifications.
-
-**2. Understand the candidate.** Paste or upload a resume → the AI maps it
-against the role: strengths, missing skills, weak areas, and specific resume
-claims worth probing (e.g. "improved accuracy by 18%" — how did they measure
-that?).
-
-**3. Score the fit.** A Job Fit percentage with a clear breakdown: skills that
-are a strong match, partial match, and missing/weak — with a short rationale.
-
-**4. Run a real adaptive interview**, not a fixed question list:
-
-| Level | Focus |
-|---|---|
-| **Screening** | Resume walkthrough, motivation, role fit, communication |
-| **Competency** | Technical depth, problem-solving, behavioural competencies, past projects |
-| **Deep-Dive** | Follow-ups that challenge vague or weak answers, probe resume claims, test reasoning with "why/how" and scenario questions |
-
-Every question is generated from the candidate's actual resume, the JD, and
-their previous answer — the interviewer adapts its next question and its
-difficulty based on how the last one went, not from a script.
-
-**5. Voice-native.** Speak your answers instead of typing — the AI transcribes
-you, evaluates the answer, and asks its next question out loud. Say "stop the
-interview" at any point (typed or spoken) and it ends cleanly.
-
-**6. Performance report.** Overall score, per-level competency breakdown,
-strengths, weaknesses, a prioritized preparation plan, and a readiness verdict
-(🔴 Not Ready → 🟢 Strong Candidate).
-
-## What's intentionally not included
-
-**Video interview** was a bonus/optional requirement per the brief and was a
-deliberate scope decision — the voice experience is the focus here, built to
-be solid rather than splitting effort across both.
-
----
-
-## Tech stack
-
-| Layer | Choice | Why |
-|---|---|---|
-| Backend | FastAPI (Python) | Async-native, plays well with LLM calls and file uploads |
-| LLM | Mistral API (`mistral-small`, with an automatic fallback model) | Fast, cheap, reliable JSON-mode output |
-| Speech-to-text | faster-whisper (`tiny`, CPU/int8) | Runs locally, no STT API cost or key |
-| Text-to-speech | edge-tts | Free, no API key, natural-sounding voices |
-| Frontend | Jinja2 templates + vanilla JS + CSS | No build step, no framework overhead — fast to ship and easy to reason about |
-| File parsing | pypdf, python-docx | JD/resume upload as PDF, DOCX, or plain text |
-| Session state | In-memory store | Simple for a single-instance prototype; swappable for Redis/Postgres without touching route code |
-
-## Architecture
-
-```
-app/
-├── main.py                # FastAPI app, route registration, page rendering
-├── config.py               # Settings (API keys, model names, voice config) via .env
-├── routers/                 # Thin HTTP layer — no business logic lives here
-│   ├── ingestion.py         # session creation, JD/resume upload
-│   ├── analysis.py          # role/candidate/fit analysis
-│   ├── interview.py         # interview start/answer/stop/report
-│   └── voice.py             # voice-answer (STT) + TTS endpoints
-├── services/                 # All business logic
-│   ├── llm.py                # single choke point for every Mistral call
-│   ├── extraction.py         # PDF/DOCX/TXT → plain text
-│   ├── analysis.py           # role analysis, candidate analysis, job fit scoring
-│   ├── interview.py           # the adaptive interview state machine
-│   ├── report.py              # deterministic scoring + LLM-written narrative
-│   ├── voice.py                # faster-whisper STT, edge-tts TTS
-│   └── store.py                 # in-memory session store
-├── models/schemas.py            # Pydantic models — the Session object is the
-│                                  single source of truth for a candidate's run
-├── prompts/                       # every prompt template, kept separate from
-│                                  orchestration logic
-├── templates/                     # dashboard.html, interview.html
-└── static/                         # style.css, app.js, interview.js
-```
-
-### How the adaptive interview actually works
-
-One LLM call per answer does double duty: it evaluates the answer just given
-(1–5 quality score, plus tags like `weak_area:system_design`) **and**
-generates the next question in the same response — grounded in the role
-analysis, the candidate's resume, the full transcript so far, and the answer
-that was just submitted. That's what makes the follow-up genuinely reactive
-instead of pulling from a fixed list.
-
-Level progression (screening → competency → deep-dive → done) is decided by
-the model's own `advance_level` signal, but bounded by hard guardrails
-(`MIN_QUESTIONS_PER_LEVEL` / `MAX_QUESTIONS_PER_LEVEL`) so a model that's
-reluctant to advance — or too eager to end early — can't get the interview
-stuck or make it too short.
-
-Three ways an interview can end without waiting for the model to decide it's
-done: a spoken/typed stop phrase, the 10-minute wall-clock cap, or the
-explicit "Stop Interview" button — all three skip the LLM call entirely and
-record why in `ended_reason`.
-
-### How scoring works
-
-Per-answer quality scores (1–5) are set by the LLM during the interview, but
-the **overall score and per-level averages are computed deterministically in
-code** from those numbers — never re-derived by asking the LLM to average its
-own transcript, which is a common source of silent arithmetic drift. The
-LLM's only job at report time is the narrative: summary, strengths,
-weaknesses, per-level feedback text, and the improvement plan — all grounded
-in the transcript and the computed stats it's given.
-
-Readiness bands: **80+** Strong Candidate · **60–79** Interview Ready ·
-**40–59** Needs Practice · **<40** Not Ready.
-
----
-
-## Running it locally
+## Setup
 
 ```bash
-git clone <your-repo-url>
 cd interview-accelerator
 python -m venv venv
 source venv/bin/activate      # Windows: venv\Scripts\activate
@@ -154,46 +31,103 @@ cp .env.example .env
 uvicorn app.main:app --reload
 ```
 
-Open **http://127.0.0.1:8000**.
+Open http://127.0.0.1:8000
 
-> First voice answer will be slower than the rest — faster-whisper downloads
-> and loads its model (~75MB for `tiny`) on first use, then stays warm.
-> Decoding the browser's webm/opus recordings needs `ffmpeg`/`libav`
-> available on your system PATH.
+## What works right now
 
-### Environment variables
+1. Paste or upload a JD (PDF/DOCX/TXT)
+2. Paste or upload a Resume (PDF/DOCX/TXT)
+3. Click "Analyse" → Mistral extracts structured Role Analysis, Candidate
+   Analysis, and computes a Job Fit score with strong/partial/missing skill
+   buckets.
+4. Click "Start Interview →" (or go to `/interview?session_id=...`) to run a
+   full adaptive text-based interview: Screening → Competency → Deep-Dive,
+   with each question generated from the previous answer, the resume, and the
+   JD — not a fixed question bank.
+5. On the interview page: click **🎤 Record Answer** to speak instead of
+   typing. It records via the browser's MediaRecorder API, uploads the audio,
+   transcribes it with faster-whisper (`tiny`, runs on CPU), and feeds the
+   transcript into the exact same evaluation/next-question pipeline as typed
+   answers. Each AI question is also spoken aloud via edge-tts (toggle with
+   the "Speak questions aloud" checkbox).
 
-| Variable | Default | Notes |
-|---|---|---|
-| `MISTRAL_API_KEY` | — | **Required.** Get one from Mistral's console. |
-| `MISTRAL_MODEL` | `mistral-small-2603` | Primary model for all analysis/interview/report calls |
-| `MISTRAL_FALLBACK_MODEL` | `mistral-small-latest` | Tried once if the primary model's retries are exhausted |
-| `WHISPER_MODEL_SIZE` | `tiny` | CPU-friendly; `tiny.en` also works |
-| `TTS_VOICE` | `en-US-GuyNeural` | Any edge-tts voice name |
+Session state is in-memory only right now (resets on server restart) — that's
+intentional for this stage, so we can validate the LLM pipeline before adding
+DB persistence.
 
-## Using it
+### How the adaptive interview state machine works (`app/services/interview.py`)
 
-1. **Dashboard** (`/`) — paste or upload your JD and resume → **Analyse My
-   Fit**. You'll get the role breakdown, candidate breakdown, and Job Fit
-   score.
-2. Click **Start AI Interview →**.
-3. Answer by typing or by clicking **🎤 Record Answer**. Toggle "Speak
-   questions aloud" to hear the interviewer.
-4. Click **⏹ Stop Interview** any time, or just keep going until the AI ends
-   it naturally after the deep-dive level.
-5. Your **Performance Report** appears automatically once the interview ends
-   — score, competency breakdown, strengths/weaknesses, and a prioritized
-   prep plan.
+- One LLM call per turn does double duty: evaluates the just-submitted answer
+  (1-5 quality score + tags like `weak_area:system_design`) AND generates the
+  next question in the same response, so the follow-up genuinely reacts to
+  what the candidate just said.
+- Level progression (screening → competency → deep_dive → done) is decided by
+  the model's `advance_level` signal, but bounded by hard-coded
+  `MIN_QUESTIONS_PER_LEVEL` / `MAX_QUESTIONS_PER_LEVEL` guardrails — tested
+  with a mocked LLM that always refuses to advance, and the state machine
+  still force-terminates in 14 turns rather than looping forever.
+- Verified with `unittest.mock` end-to-end (analysis → interview start →
+  multi-turn answer loop → completion) since no live Mistral key was available
+  in the build environment — logic is confirmed correct, but **the actual
+  prompt quality/question relevance still needs a real run with your API key**
+  before you trust it for a demo.
 
-Session state is in-memory, so it resets on server restart — fine for a
-single-run prototype/demo; swap `app/services/store.py` for Redis/Postgres if
-you need persistence across restarts.
+## Architecture notes
 
-## Known limitations
+- `app/services/llm.py` — single choke point for all Mistral calls
+  (`llm_json` / `llm_text`). Nothing else touches the Mistral SDK directly.
+- `app/prompts/` — all prompt templates live here, separate from orchestration
+  logic in `app/services/analysis.py`.
+- `app/models/schemas.py` — the `Session` object is the single source of
+  truth for JD text, resume text, analysis results, and (once Phase 4/5 land)
+  the full interview transcript and adaptive state.
+- `app/services/store.py` — in-memory session store, swappable for
+  Postgres/Redis without touching router code.
 
-- Sessions are in-memory only (no persistence across restarts).
-- Voice quality depends on the `tiny` Whisper model — smaller/faster, so
-  occasionally less accurate than larger Whisper variants on noisy audio.
-- No video interview (see "What's intentionally not included" above).
-- Single-user prototype — no auth, no multi-tenant session isolation beyond
-  the per-session UUID.
+## Next steps
+
+Phase 7 (report generation) is done — see `app/services/report.py`. What's
+actually left before this is submission-ready:
+
+1. **Test the mic recording path live** — `/interview/voice-answer` has not
+   yet been exercised with a real recording (only typed answers have been
+   confirmed against the live API so far). See the voice section below.
+2. **Decide the "mandatory voice" question** — the interview currently
+   accepts typed answers even with voice off. If your brief requires the
+   candidate to actually use voice (not just have it available), that needs
+   a code change (e.g. disable text submission, or require N voice answers
+   per level) — it isn't one yet.
+3. **Rotate your Mistral API key** if it's ever been shared, committed, or
+   pasted anywhere outside your local `.env` — `.env` is now gitignored, but
+   that only prevents *future* leaks.
+4. **Decide on deployment** — a live URL (Render/Railway/etc.) vs. a local
+   run + repo submission, per whatever your assignment brief actually asks
+   for.
+
+## ⚠️ Voice layer — TTS confirmed live, STT still unverified (read before demoing)
+
+Update: a live run against the real Mistral API confirmed `/api/tts` working
+end-to-end (questions were audibly spoken during a real interview turn). The
+**microphone → faster-whisper transcription path (`/interview/voice-answer`)
+has not yet been exercised** — every real run so far has answered by typing,
+not recording. Test the 🎤 Record Answer button with an actual microphone
+before considering voice input "done," not just voice output.
+
+1. Click **🎤 Record Answer**, speak an answer, confirm it transcribes
+   correctly and the interview proceeds normally from the transcript.
+2. First voice-answer request will be slow (faster-whisper model
+   download + load on first call, ~75MB for the `tiny` model) — subsequent
+   ones are fast on CPU.
+3. If `transcribe_audio_bytes` throws, check that `ffmpeg`/`libav` is on your
+   system PATH — PyAV (faster-whisper's audio decoder) needs it to decode the
+   browser's webm/opus recordings.
+
+## Before you submit
+
+- [ ] Real mic → STT round-trip tested (see above)
+- [ ] Full interview run to completion with a real report generated (not just
+      through the analysis step)
+- [ ] Confirmed with your assignment brief whether voice is required to be
+      mandatory (currently optional — see "Next steps")
+- [ ] Mistral API key rotated if it was ever shared/committed anywhere
+- [ ] Decided on local-run-only vs. live deployment for submission
