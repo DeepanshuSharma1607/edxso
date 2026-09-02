@@ -119,13 +119,3 @@ before considering voice input "done," not just voice output.
 3. If `transcribe_audio_bytes` throws, check that `ffmpeg`/`libav` is on your
    system PATH — PyAV (faster-whisper's audio decoder) needs it to decode the
    browser's webm/opus recordings.
-
-## Before you submit
-
-- [ ] Real mic → STT round-trip tested (see above)
-- [ ] Full interview run to completion with a real report generated (not just
-      through the analysis step)
-- [ ] Confirmed with your assignment brief whether voice is required to be
-      mandatory (currently optional — see "Next steps")
-- [ ] Mistral API key rotated if it was ever shared/committed anywhere
-- [ ] Decided on local-run-only vs. live deployment for submission
