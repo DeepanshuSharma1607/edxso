@@ -32,7 +32,7 @@ report and a prioritized prep plan.
 
 Built for the **AI Product Engineer Intern — Interview Accelerator Challenge**.
 
-🔗 **Live App**: https://interview-accelerator-ahhu.onrender.com
+🔗 **Live App**: [https://interview-accelerator-ahhu.onrender.com](https://interview-accelerator-ahhu.onrender.com)
 📹 **Demo Video**: [Watch on Google Drive](https://drive.google.com/file/d/17mNoSwgSx_uwf1n0Ype2ps7raPVV0P3K/view?usp=drivesdk)
 
 > Hosted on Render's free tier — the app spins down after ~15 minutes of
