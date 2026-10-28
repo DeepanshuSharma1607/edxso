@@ -12,3 +12,4 @@ faster-whisper>=1.0.3
 edge-tts>=6.1.12
 python-dotenv>=1.2.0
 aiofiles>=25.1.0
+google-genai
