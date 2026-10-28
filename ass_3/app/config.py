@@ -1,22 +1,25 @@
-from pydantic_settings import BaseSettings
 from pathlib import Path
-import os
-from dotenv import load_dotenv
+
+from pydantic_settings import BaseSettings, SettingsConfigDict
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-load_dotenv(BASE_DIR / ".env")
 
-GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "")
 
 class Settings(BaseSettings):
-    gemini_api_key: str = GEMINI_API_KEY
-    gemini_model: str = "gemini-2.5-flash"
-    gemini_fallback_model: str = "gemini-2.0-flash"
-    whisper_model_size: str = "tiny" # tiny.en also valid, CPU-friendly
-    tts_voice: str = "en-US-GuyNeural" # edge-tts voice for interviewer
+    # Google AI Studio key — https://aistudio.google.com/apikey
+    gemini_api_key: str = ""
+    gemini_model: str = "gemini-3.5-flash-lite"
+    # Tried once if the primary model's retries are exhausted or it 404s.
+    gemini_fallback_model: str = "gemini-3.6-flash"
+    whisper_model_size: str = "tiny"  # tiny.en also valid, CPU-friendly
+    tts_voice: str = "en-US-GuyNeural"  # edge-tts voice for interviewer
     data_dir: str = "./data"
 
-    class Config:
-        env_file = ".env"
+    model_config = SettingsConfigDict(
+        env_file=BASE_DIR / ".env",
+        env_file_encoding="utf-8",
+        extra="ignore",  # stale vars (e.g. old MISTRAL_*) must not crash startup
+    )
+
 
 settings = Settings()

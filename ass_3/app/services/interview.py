@@ -18,7 +18,7 @@ import time
 from typing import Optional
 
 from app.models.schemas import Session, QAExchange
-from app.services.llm import llm_json
+from app.services.llm import llm_json, LLMServiceError, as_bool, as_int
 from app.prompts.interview_prompts import (
     LEVEL_INSTRUCTIONS,
     OPENING_QUESTION_SYSTEM,
@@ -104,7 +104,9 @@ async def start_interview(session: Session) -> Session:
             resume_text=session.resume_text,
         ),
     )
-    question = data["next_question"]
+    question = str(data.get("next_question") or "").strip()
+    if not question:
+        raise LLMServiceError("Gemini returned no opening question.")
 
     session.current_level = "screening"
     session.interview_started_at = time.time()
@@ -180,16 +182,16 @@ async def submit_answer(session: Session, answer_text: str) -> dict:
         pending.answer = None
         raise
 
-    pending.answer_quality = int(data.get("answer_quality", 3))
-    pending.tags = list(data.get("tags", []))
+    pending.answer_quality = as_int(data.get("answer_quality"), 3, 1, 5)
+    pending.tags = [str(t) for t in (data.get("tags") or [])]
     evaluation = {"answer_quality": pending.answer_quality, "tags": pending.tags}
 
     # Guardrails override the model's own judgement at the edges.
     force_advance = level_count >= MAX_QUESTIONS_PER_LEVEL[current_level]
     can_advance = level_count >= MIN_QUESTIONS_PER_LEVEL[current_level]
-    should_advance = force_advance or (can_advance and bool(data.get("advance_level")))
+    should_advance = force_advance or (can_advance and as_bool(data.get("advance_level")))
 
-    interview_complete = bool(data.get("interview_complete")) and current_level == "deep_dive"
+    interview_complete = as_bool(data.get("interview_complete")) and current_level == "deep_dive"
     if force_advance and current_level == "deep_dive":
         interview_complete = True
 
@@ -201,7 +203,7 @@ async def submit_answer(session: Session, answer_text: str) -> dict:
         if session.current_level == "done":
             return _done_result(session, "completed", evaluation)
 
-    next_question = data.get("next_question") or ""
+    next_question = str(data.get("next_question") or "").strip()
     if not next_question:
         # Model said not complete but gave no question — fail safe rather than
         # silently dead-ending the interview.

@@ -101,7 +101,7 @@ be solid rather than splitting effort across both.
 | Layer | Choice | Why |
 |---|---|---|
 | Backend | FastAPI (Python) | Async-native, plays well with LLM calls and file uploads |
-| LLM | Mistral API (`mistral-small`, with an automatic fallback model) | Fast, cheap, reliable JSON-mode output |
+| LLM | Google Gemini API (`gemini-3.5-flash-lite`, with an automatic fallback model) | Fast, cheap, reliable JSON-mode output |
 | Speech-to-text | faster-whisper (`tiny`, CPU/int8) | Runs locally, no STT API cost or key |
 | Text-to-speech | edge-tts | Free, no API key, natural-sounding voices |
 | Frontend | Jinja2 templates + vanilla JS + CSS | No build step, no framework overhead — fast to ship and easy to reason about |
@@ -120,7 +120,7 @@ app/
 │   ├── interview.py         # interview start/answer/stop/report
 │   └── voice.py             # voice-answer (STT) + TTS endpoints
 ├── services/                 # All business logic
-│   ├── llm.py                # single choke point for every Mistral call
+│   ├── llm.py                # single choke point for every Gemini call
 │   ├── extraction.py         # PDF/DOCX/TXT → plain text
 │   ├── analysis.py           # role analysis, candidate analysis, job fit scoring
 │   ├── interview.py           # the adaptive interview state machine
@@ -241,7 +241,7 @@ be solid rather than splitting effort across both.
 | Layer | Choice | Why |
 |---|---|---|
 | Backend | FastAPI (Python) | Async-native, plays well with LLM calls and file uploads |
-| LLM | Mistral API (`mistral-small`, with an automatic fallback model) | Fast, cheap, reliable JSON-mode output |
+| LLM | Google Gemini API (`gemini-3.5-flash-lite`, with an automatic fallback model) | Fast, cheap, reliable JSON-mode output |
 | Speech-to-text | faster-whisper (`tiny`, CPU/int8) | Runs locally, no STT API cost or key |
 | Text-to-speech | edge-tts | Free, no API key, natural-sounding voices |
 | Frontend | Jinja2 templates + vanilla JS + CSS | No build step, no framework overhead — fast to ship and easy to reason about |
@@ -261,7 +261,7 @@ app/
 │   ├── interview.py         # interview start/answer/stop/report
 │   └── voice.py             # voice-answer (STT) + TTS endpoints
 ├── services/                 # All business logic
-│   ├── llm.py                # single choke point for every Mistral call
+│   ├── llm.py                # single choke point for every Gemini call
 │   ├── extraction.py         # PDF/DOCX/TXT → plain text
 │   ├── analysis.py           # role analysis, candidate analysis, job fit scoring
 │   ├── interview.py           # the adaptive interview state machine
@@ -325,9 +325,9 @@ pip install -r requirements.txt
 
 
 cp .env.example .env
-# edit .env and set MISTRAL_API_KEY to your own key
+# edit .env and set GEMINI_API_KEY to your own key
 
-# edit .env and set MISTRAL_API_KEY to your own key
+# edit .env and set GEMINI_API_KEY to your own key
 
 uvicorn app.main:app --reload
 ```
@@ -343,9 +343,9 @@ Open **http://127.0.0.1:8000**.
 
 | Variable | Default | Notes |
 |---|---|---|
-| `MISTRAL_API_KEY` | — | **Required.** Get one from Mistral's console. |
-| `MISTRAL_MODEL` | `mistral-small-2603` | Primary model for all analysis/interview/report calls |
-| `MISTRAL_FALLBACK_MODEL` | `mistral-small-latest` | Tried once if the primary model's retries are exhausted |
+| `GEMINI_API_KEY` | — | **Required.** Get one from [Google AI Studio](https://aistudio.google.com/apikey). |
+| `GEMINI_MODEL` | `gemini-3.5-flash-lite` | Primary model for all analysis/interview/report calls |
+| `GEMINI_FALLBACK_MODEL` | `gemini-3.6-flash` | Tried once if the primary model's retries are exhausted |
 | `WHISPER_MODEL_SIZE` | `tiny` | CPU-friendly; `tiny.en` also works |
 | `TTS_VOICE` | `en-US-GuyNeural` | Any edge-tts voice name |
 
@@ -387,9 +387,9 @@ Open **http://127.0.0.1:8000**.
 
 | Variable | Default | Notes |
 |---|---|---|
-| `MISTRAL_API_KEY` | — | **Required.** Get one from Mistral's console. |
-| `MISTRAL_MODEL` | `mistral-small-2603` | Primary model for all analysis/interview/report calls |
-| `MISTRAL_FALLBACK_MODEL` | `mistral-small-latest` | Tried once if the primary model's retries are exhausted |
+| `GEMINI_API_KEY` | — | **Required.** Get one from [Google AI Studio](https://aistudio.google.com/apikey). |
+| `GEMINI_MODEL` | `gemini-3.5-flash-lite` | Primary model for all analysis/interview/report calls |
+| `GEMINI_FALLBACK_MODEL` | `gemini-3.6-flash` | Tried once if the primary model's retries are exhausted |
 | `WHISPER_MODEL_SIZE` | `tiny` | CPU-friendly; `tiny.en` also works |
 | `TTS_VOICE` | `en-US-GuyNeural` | Any edge-tts voice name |
 

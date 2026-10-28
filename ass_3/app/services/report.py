@@ -73,16 +73,18 @@ async def generate_report(session: Session) -> PerformanceReport:
         ),
     )
 
-    per_level_feedback_text = data.get("per_level_feedback", {}) or {}
+    per_level_feedback_text = data.get("per_level_feedback") or {}
+    if not isinstance(per_level_feedback_text, dict):
+        per_level_feedback_text = {}
     for level, lf in level_stats.items():
         lf.feedback = str(per_level_feedback_text.get(level, "") or "")
 
     return PerformanceReport(
         overall_score=overall_score,
         readiness_label=_readiness_label(overall_score),
-        summary=str(data.get("summary", "")),
-        strengths=list(data.get("strengths", [])),
-        weaknesses=list(data.get("weaknesses", [])),
+        summary=str(data.get("summary") or ""),
+        strengths=[str(x) for x in (data.get("strengths") or [])],
+        weaknesses=[str(x) for x in (data.get("weaknesses") or [])],
         per_level_feedback=level_stats,
-        improvement_plan=list(data.get("improvement_plan", [])),
+        improvement_plan=[str(x) for x in (data.get("improvement_plan") or [])],
     )

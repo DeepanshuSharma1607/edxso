@@ -1,5 +1,5 @@
-import json
-from app.services.llm import llm_json
+from pydantic import ValidationError
+from app.services.llm import llm_json, LLMServiceError, as_int
 from app.models.schemas import RoleAnalysis, CandidateAnalysis, JobFit
 from app.prompts.analysis_prompts import (
     ROLE_ANALYSIS_SYSTEM,
@@ -11,12 +11,19 @@ from app.prompts.analysis_prompts import (
 )
 
 
+def _build(model, data: dict):
+    try:
+        return model(**data)
+    except ValidationError as e:
+        raise LLMServiceError(f"Gemini returned an unexpected {model.__name__} shape: {e}") from e
+
+
 async def analyse_role(jd_text: str) -> RoleAnalysis:
     data = await llm_json(
         ROLE_ANALYSIS_SYSTEM,
         ROLE_ANALYSIS_USER_TEMPLATE.format(jd_text=jd_text),
     )
-    return RoleAnalysis(**data)
+    return _build(RoleAnalysis, data)
 
 
 async def analyse_candidate(resume_text: str, role_analysis: RoleAnalysis) -> CandidateAnalysis:
@@ -27,7 +34,7 @@ async def analyse_candidate(resume_text: str, role_analysis: RoleAnalysis) -> Ca
             resume_text=resume_text,
         ),
     )
-    return CandidateAnalysis(**data)
+    return _build(CandidateAnalysis, data)
 
 
 async def compute_job_fit(role_analysis: RoleAnalysis, candidate_analysis: CandidateAnalysis) -> JobFit:
@@ -38,4 +45,5 @@ async def compute_job_fit(role_analysis: RoleAnalysis, candidate_analysis: Candi
             candidate_analysis_json=candidate_analysis.model_dump_json(),
         ),
     )
-    return JobFit(**data)
+    data["score"] = as_int(data.get("score"), 0, 0, 100)
+    return _build(JobFit, data)

@@ -1,3 +1,4 @@
+import logging
 from fastapi import APIRouter, HTTPException, UploadFile, File
 from pydantic import BaseModel
 from fastapi.responses import Response
@@ -6,6 +7,7 @@ from app.services.interview import submit_answer
 from app.services.llm import LLMServiceError
 from app.services.voice import transcribe_audio_bytes, synthesize_speech
 
+logger = logging.getLogger("uvicorn.error")
 router = APIRouter(prefix="/api/session", tags=["voice"])
 tts_router = APIRouter(prefix="/api", tags=["voice"])
 
@@ -24,7 +26,8 @@ async def voice_answer(session_id: str, audio: UploadFile = File(...)):
     try:
         transcript_text = transcribe_audio_bytes(raw, suffix=suffix)
     except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Transcription failed: {e}")
+        logger.exception("Transcription failed")
+        raise HTTPException(status_code=500, detail=f"Transcription failed: {type(e).__name__}: {e}")
 
     if not transcript_text:
         raise HTTPException(
@@ -55,7 +58,8 @@ async def tts(body: TTSBody):
     try:
         audio_bytes = await synthesize_speech(body.text.strip())
     except Exception as e:
-        raise HTTPException(status_code=500, detail=f"TTS failed: {e}")
+        logger.exception("TTS failed")
+        raise HTTPException(status_code=500, detail=f"TTS failed: {type(e).__name__}: {e}")
     if not audio_bytes:
         raise HTTPException(status_code=500, detail="TTS produced no audio.")
     return Response(content=audio_bytes, media_type="audio/mpeg")
